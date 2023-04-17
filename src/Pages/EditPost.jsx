@@ -6,11 +6,12 @@ const EditPost = ({ data }) => {
 
     const { id } = useParams(); 
     const [post, setPost] = useState(data.filter((post2) => post2.id === parseInt(id))[0]);
-
+    const [userPassword, setUserPassword] = useState(""); 
     const updatePost = async (event) => {
-        event.preventDefault(); 
 
-        await supabase
+        if (userPassword === post.postPassword) {
+            event.preventDefault(); 
+            await supabase
             .from("audio-heads")
             .update({
                 postTitle: post.postTitle,
@@ -19,7 +20,13 @@ const EditPost = ({ data }) => {
             })
             .eq("id", id); 
 
-        window.location = "/"; 
+            window.location = "/"; 
+        } else {
+            alert("You've entered the wrong key for this post. You need to enter the right key to be able to edit this post"); 
+            event.preventDefault(); 
+            window.location = "/";  
+        }
+    
     };
 
     const removePost = async (event) => {
@@ -38,6 +45,10 @@ const EditPost = ({ data }) => {
             return { ...prevPost, [event.target.name]: event.target.value };
         });
     };
+
+    const handleUserpasswordChange = (event) => {
+        setUserPassword(event.target.value); 
+    }
     
 
     return (
@@ -65,6 +76,14 @@ const EditPost = ({ data }) => {
                 value={post.postDesc}
                 name="postDesc"
                 onChange={onChange}
+            />
+            <label htmlFor="postPassword">Post Key: </label>
+            <input 
+            type="text"
+            id="postPassword"
+            name="postPassword"
+            value={userPassword}
+            onChange={handleUserpasswordChange}
             />
             <input type="submit" value="Update" />
             <button className="deleteButton" onClick={removePost}>Delete</button>

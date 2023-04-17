@@ -4,7 +4,7 @@ import { supabase } from "../client";
 import "../Styles/CreatePosts.css"; 
 const CreatePost = () => {
 
-    const [post, setPost] = useState({postTitle : "", postDesc : "", postImage : ""});
+    const [post, setPost] = useState({postTitle : "", postDesc : "", postImage : "", postPassword : ""});
 
     const makePost = async (event) => {
         event.preventDefault(); 
@@ -15,7 +15,9 @@ const CreatePost = () => {
         postTitle: post.title || "title",
         postDesc: post.description || "description",
         postImage: post.Image || "",
-        postUpvotes: 0
+        postUpvotes: 0,
+        postPassword: post.postPassword || "",
+        postType : post.postType || "" 
         })
         .select();
 
@@ -40,6 +42,13 @@ const CreatePost = () => {
                 value={post.title}
                 onChange={onChange}
                 />
+                <label htmlFor="postType">Post Type: </label>
+                <select id="postType" name="postType" value={post.postType} onChange={onChange}>
+                    <option value="Questin">Question</option>
+                    <option value="Recommendation">Recommendation</option>
+                    <option value="Opinion">Opinion</option>
+                </select>
+
                 <label htmlFor="Image">Image: </label>
                 <input 
                 type="text"
@@ -55,6 +64,14 @@ const CreatePost = () => {
                 id="description"
                 name="description"
                 value={post.description}
+                onChange={onChange}
+                />
+                <label htmlFor="postPassword">Post Key: </label>
+                <input 
+                type="text"
+                id="postPassword"
+                name="postPassword"
+                value={post.postPassword}
                 onChange={onChange}
                 />
                 <input type="submit" value="Submit" />

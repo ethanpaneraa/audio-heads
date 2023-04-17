@@ -26,6 +26,22 @@ const AllPosts = (props) => {
         setPosts(searchedPost); 
     };
 
+    const onlyQuestions = () => {
+        const onlyQuestionPost = props.data.filter(post => post.postType.includes("Question")); 
+        setPosts(onlyQuestionPost); 
+    };
+
+    const onlyOpinions = () => {
+        const onlyOpinion2 = props.data.filter(post => post.postType.includes("Opinion")); 
+        setPosts(onlyOpinion2); 
+    };
+
+
+    const onlyRecs = () => {
+        const onlyRecsPosts = props.data.filter(post => post.postType.includes("Recommendation"));
+        setPosts(onlyRecsPosts); 
+    }
+
     return (
         <div className="all-posts">
             <div className="filter-buttons">
@@ -33,6 +49,9 @@ const AllPosts = (props) => {
                 <button onClick={() => searchPost("")}>Clear Search</button>
                 <button onClick={mostUpvotes}>Most Upvotes</button>
                 <button onClick={mostDownvotes}>Most Downvotes</button>
+                <button onClick={onlyQuestions}>Question</button>
+                <button onClick={onlyOpinions}>Opinions</button>
+                <button onClick={onlyRecs}>Recommendations</button>
             </div>
             {posts && posts.length > 0 ? (
                 posts.map((post, index) => 

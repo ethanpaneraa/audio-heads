@@ -23,12 +23,6 @@ const Post = ({ data }) => {
         window.location = "/"; 
     };
 
-    const onChange = (event) => {
-        setPost((prevPost) => {
-            return {...prevPost, [event.target.name]: event.target.value};
-        });
-    };
-
     return (
         <div>
             <PostCard 
