@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PostCard from "../Components/PostCard";
+import { supabase } from "../client";
 
 
 const AllPosts = (props) => {
@@ -10,8 +11,29 @@ const AllPosts = (props) => {
         setPosts(props.data);
     }, [props]);
 
+    const mostUpvotes = () => {
+        const sortedPost = [...posts.sort((x,y) => y.id - x.id)];
+        setPosts(sortedPost); 
+    };
+
+    const mostDownvotes = () => {
+        const sortedPost = [...posts.sort((x,y) => x.id - y.id)]; 
+        setPosts(sortedPost);
+    }; 
+
+    const searchPost = (searchTerm) => {
+        const searchedPost = props.data.filter(post => post.postTitle.toLowerCase().includes(searchTerm.toLowerCase()));
+        setPosts(searchedPost); 
+    };
+
     return (
         <div className="all-posts">
+            <div className="filter-buttons">
+                <input type="text" placeholder="Search Posts" onChange={(event) => searchPost(event.target.value)} />
+                <button onClick={() => searchPost("")}>Clear Search</button>
+                <button onClick={mostUpvotes}>Most Upvotes</button>
+                <button onClick={mostDownvotes}>Most Downvotes</button>
+            </div>
             {posts && posts.length > 0 ? (
                 posts.map((post, index) => 
                 (<Link to={`/${post.id}`} key={index}>
