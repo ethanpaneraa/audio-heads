@@ -106,6 +106,12 @@ const PostCard = (props) => {
             <h4>Created: {props.postOrigin}</h4>
             <p>{props.postDesc}</p>
             <img src={props.postImage} alt="Image for this post" />
+            <video width="540" height="275" controls preload="auto"> 
+                <source src={props.postVideo}
+                        type="video/mp4"/>
+                <source src={props.postVideo}
+                        type="video/ogg"/>
+            </video>
             <div>
                 <button className="upvote button" onClick={Upvote}>🔼</button>
                 <h3>{upvotes}</h3>

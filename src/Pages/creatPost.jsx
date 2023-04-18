@@ -17,7 +17,8 @@ const CreatePost = () => {
         postImage: post.Image || "",
         postUpvotes: 0,
         postPassword: post.postPassword || "",
-        postType : post.postType || "" 
+        postType : post.postType || "",
+        postVideo: post.postVideo || ""
         })
         .select();
 
@@ -48,13 +49,21 @@ const CreatePost = () => {
                     <option value="Recommendation">Recommendation</option>
                     <option value="Opinion">Opinion</option>
                 </select>
-
-                <label htmlFor="Image">Image: </label>
+                
+                <label htmlFor="Image">Image Link: </label>
                 <input 
                 type="text"
                 id="Image"
                 name="Image"
                 value={post.Image}
+                onChange={onChange}
+                />
+                <label htmlFor="postVideo">Video Link: </label>
+                <input
+                type="text"
+                id="postVideo"
+                name="postVideo"
+                value={post.postVideo}
                 onChange={onChange}
                 />
                 <label htmlFor="desc">Descripition: </label>
