@@ -8,9 +8,12 @@ import Post from './Pages/Post';
 import './App.css'
 import { supabase } from './client';
 
+
 function App() {
 
   const [posts, setPosts] = useState([]); 
+
+
 
   let elements = useRoutes(
     [

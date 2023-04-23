@@ -1,0 +1,49 @@
+.create-post-container {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.create-post-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-items: center;
+}
+
+.create-post-container form input {
+    width: 415px;
+}
+
+.create-post-container form label {
+    margin-top: 20px;
+    margin-bottom: 7px;
+}
+
+.create-post-container form select {
+    width: 420px;
+}
+
+.create-post-container form input {
+    margin-top: 7px;
+}
+
+.publish-changes {
+    margin-top: 25px !important;
+    padding: 7px 10px;
+    width: fit-content !important;
+}
+
+.edit-buttons {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.edit-buttons input {
+    width: 100px !important;
+}
+
+.edit-buttons button {
+    width: 100px !important;
+}

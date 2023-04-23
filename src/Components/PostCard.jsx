@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { supabase } from "../client";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import ReactPlayer from "react-player"; 
+import "../Styles/PostCard.css"
 
 const PostCard = (props) => {
     console.log(props); 
@@ -57,7 +59,7 @@ const PostCard = (props) => {
             })
             .eq("id", id)
             .select("postDownvotes");
-    
+            
         if (downvoteError) {
             console.log(downvoteError);
             return;
@@ -97,48 +99,80 @@ const PostCard = (props) => {
             setCommentText("");
         };
 
+        const removePost = async (event) => {
+            event.preventDefault();
+    
+            await supabase
+                .from("audio-heads")
+                .delete()
+                .eq("id", id);
+    
+            window.location = "/"; 
+        };
+
 
 
     return (
-<div className="post-card">
-        <div>
-            <h2>{props.postTitle}</h2>
-            <h4>Created: {props.postOrigin}</h4>
-            <p>{props.postDesc}</p>
-            <img src={props.postImage} alt="Image for this post" />
-            <video width="540" height="275" controls preload="auto"> 
-                <source src={props.postVideo}
-                        type="video/mp4"/>
-                <source src={props.postVideo}
-                        type="video/ogg"/>
-            </video>
-            <div>
-                <button className="upvote button" onClick={Upvote}>🔼</button>
-                <h3>{upvotes}</h3>
-                <button onClick={Downvote}>⬇️</button>
-            </div>
-        </div>
-        <div>
-            <form onSubmit={handleCommentSubmit}>
-                <label>
-                    Add a comment:
-                    <input
-                        type="text"
-                        value={commentText}
-                        onChange={handleCommentChange}
-                    />
-                </label>
-                <button type="submit">Submit</button>
-            </form>
-            <div>
-                {comments2 && comments2.length > 0 ? (
-                    comments2.map((comment, index) => (
-                    <p key={index}>{comment}</p>
-                ))
+        <div className="post-card">
+            <div className="post-info2">
+                <div className="postcard-information">
+                    <div className="post-voting-buttons">
+                            <button className="upvote-button" onClick={Upvote}>🔼</button>
+                            <h3>{upvotes}</h3>
+                            <button onClick={Downvote}>⬇️</button>
+                    </div>
+                    <div className="post-text">
+                        <h2>{props.postTitle}</h2>
+                        <h4 className="post-label">{props.postType}</h4>
+                        <h5>Posted: {props.postOrigin}</h5>
+                        <h4>What this user says:</h4>
+                        <p>{props.postDesc}</p>
+                    </div>
+                </div>
+
+                {props.postVideo !== "" ? (
+                    <div className="imgee">
+                        <ReactPlayer 
+                        url={post.postVideo}
+                        width="100%"
+                        height="500px"
+                        controls
+                        />
+                        </div>
+                 ) : (
+                <div></div>
+                )}
+                <div className="post-controlers">
+                    <button><Link to={`/edit-post/${props.postID}`}>Update Post</Link></button>
+                    <button onClick={removePost}>Delete Post</button>
+                </div>
+
+                {props.postImage !== "" ? (
+                    <img src={props.postImage} alt="Image for this post"/>
                 ):
-                (<h2>No comments</h2>)}
+                <div></div>}
+                <form onSubmit={handleCommentSubmit}>
+                        <input
+                            type="text"
+                            value={commentText}
+                            onChange={handleCommentChange}
+                            placeholder="Comment your thoughts"
+                        />
+                    <button type="submit">Comment</button>
+                </form>
+                <div>
+                    {comments2 && comments2.length > 0 ? (
+                        comments2.map((comment, index) => (
+                        <p key={index}>Comment {index + 1}: {comment}</p>
+                    ))
+                    ):
+                    (
+                        <div></div>
+                    )}
+                </div>
+
             </div>
-        </div>
+                
     </div>
     );
 };

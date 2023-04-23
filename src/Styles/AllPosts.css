@@ -1,0 +1,129 @@
+.all-posts {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-bar {
+    display: flex;
+    flex-direction: row;
+    gap: 17px;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-bar input {
+    padding: 8px 15px;
+    border-radius: 10px;
+    /* margin: 8px 0; */
+    border: 1px solid silver;
+    box-sizing: none;
+}
+
+.filter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.filter-buttons {
+    border: 2px solid white; 
+    border-radius: 8px;
+    margin-top: 30px;
+    padding: 20px 40px;
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    background-color: rgb(146, 146, 146); 
+}
+
+.post-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    /* padding: 30px 250px;  */
+}
+
+.small-post-card {
+    display: flex;
+    gap: 7%;
+}
+
+.post-container a {
+    text-decoration: none; 
+    color: inherit;
+}
+
+.rating-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.rating-buttons button {
+    text-align: center;
+}
+
+.post-infoformation {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.post-infoformation h4 {
+    margin-top: -12px;
+}
+
+.post-infoformation h4 {
+    margin-bottom: 50px;
+    text-align: left;
+}
+
+.no-post {
+    padding: 12px;
+}
+
+.small-post-card-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.small-post-card-image img {
+    display: flex;
+    height: 200px;
+    width: 150px;
+    object-fit: contain !important;
+}
+
+.small-post-container {
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: center; */
+    flex-direction: column;
+    width: 900px;
+    border: 2px solid white;
+    border-radius: 8px;
+    background-color: rgb(146, 146, 146);
+    padding: 17px;
+}
+
+.small-post-container img {
+    width: 250px;
+    height: 350px;
+}
+
+.imgee {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

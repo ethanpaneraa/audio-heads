@@ -53,6 +53,7 @@ const EditPost = ({ data }) => {
 
     return (
         <div>
+            <div className="create-post-container">
             <form onSubmit={updatePost}>
             <label htmlFor="postTitle">Title</label> <br />
             <input 
@@ -85,9 +86,14 @@ const EditPost = ({ data }) => {
             value={userPassword}
             onChange={handleUserpasswordChange}
             />
-            <input type="submit" value="Update" />
-            <button className="deleteButton" onClick={removePost}>Delete</button>
+
+            <div className="edit-buttons">
+                <button type="submit">Update</button>
+                <button className="deleteButton" onClick={removePost}>Delete</button>
+            </div>
+            
             </form>
+            </div>
         </div>
     );
 };

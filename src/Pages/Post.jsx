@@ -34,9 +34,9 @@ const Post = ({ data }) => {
                 postDownvotes={post.postDownvotes}
                 postOrigin={post.created_at}
                 postComments={post.comments}
+                postVideo={post.postVideo}
+                postType={post.postType}
             />
-            <Link to={`/edit-post/${post.id}`}>Update Post</Link>
-            <button onClick={removePost}>Delete Post</button>
         </div>
     );
 };

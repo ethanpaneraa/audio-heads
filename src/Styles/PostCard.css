@@ -1,0 +1,79 @@
+.post-card {
+    margin-top: 55px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.post-info2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(146, 146, 146);
+    border: 2px solid rgb(146, 146, 146);
+    border-radius: 8px;
+    /* padding: 20px 150px; */
+}
+
+.postcard-information {
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    padding: 50px;
+}
+
+.post-voting-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.post-text {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    text-align: center;
+}
+
+.post-label {
+    background-color: #1a1a1a;
+    border: 1px solid #1a1a1a; 
+    border-radius: 8px;
+    padding: 7px;
+    font-weight: 500; 
+}
+
+.post-info2 img {
+    width: 250px;
+    height: 300px;
+}
+
+.post-media {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.post-card {
+    display: flex;
+    flex-direction: column !important
+}
+
+.post-controlers {
+    display: flex;
+    flex-direction: row;
+    /* align-items: center;  */
+    /* justify-content: center; */
+    gap: 8px;
+}
+
+.post-controlers a {
+    text-decoration: none;
+    color: inherit;
+}
