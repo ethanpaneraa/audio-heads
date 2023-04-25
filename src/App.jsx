@@ -18,7 +18,7 @@ function App() {
   let elements = useRoutes(
     [
       {
-        path:"/",
+        path:"/audio-heads/",
         element: <AllPosts data={posts} />
       },
       {

@@ -133,7 +133,7 @@ const PostCard = (props) => {
                 {props.postVideo !== "" ? (
                     <div className="imgee">
                         <ReactPlayer 
-                        url={post.postVideo}
+                        url={props.postVideo}
                         width="100%"
                         height="500px"
                         controls
