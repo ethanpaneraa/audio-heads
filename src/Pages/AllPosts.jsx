@@ -15,12 +15,12 @@ const AllPosts = (props) => {
 
 
     const mostUpvotes = () => {
-        const sortedPost = [...posts.sort((x,y) => y.id - x.id)];
+        const sortedPost = [...posts.sort((x,y) => y.postUpvotes - x.postUpvotes)];
         setPosts(sortedPost); 
     };
 
     const mostDownvotes = () => {
-        const sortedPost = [...posts.sort((x,y) => x.id - y.id)]; 
+        const sortedPost = [...posts.sort((x,y) => x.postUpvotes - y.postUpvotes)]; 
         setPosts(sortedPost);
     }; 
 
